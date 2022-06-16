@@ -1,6 +1,11 @@
-require("dotenv").config()
+require("dotenv").config();
 
-const previewMode = !(process.env.BUTTER_CMS_PREVIEW === "false" || process.env.BUTTER_CMS_PREVIEW === "0") ? 1 : 0
+const previewMode = !(
+  process.env.BUTTER_CMS_PREVIEW === "false" ||
+  process.env.BUTTER_CMS_PREVIEW === "0"
+)
+  ? 1
+  : 0;
 
 module.exports = {
   siteMetadata: {
@@ -23,9 +28,15 @@ module.exports = {
         // Optional array of locales (if configured in your account)
         locales: [],
         preview: previewMode, // Return draft content
-        levels: 2 // Optional. Defaults to 2. Defines the levels of relationships to serialize
+        levels: 2, // Optional. Defaults to 2. Defines the levels of relationships to serialize
       },
     },
-    `gatsby-plugin-react-helmet`
-  ]
-}
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-react-leaflet",
+      options: {
+        linkStyles: true, // (default: true) Enable/disable loading stylesheets via CDN
+      },
+    },
+  ],
+};
