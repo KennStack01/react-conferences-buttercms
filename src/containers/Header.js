@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import React, { useEffect, useState } from "react";
+import { Link } from "gatsby";
 
 const Header = ({ menuItems, activeLink }) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -11,14 +11,14 @@ const Header = ({ menuItems, activeLink }) => {
       const sticky = headerNavbar.offsetTop;
 
       if (window.pageYOffset > sticky) {
-        setIsSticky(true)
+        setIsSticky(true);
       } else {
-        setIsSticky(false)
+        setIsSticky(false);
       }
     };
 
-    window.document.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.document.removeEventListener('scroll', onScroll);
+    window.document.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.document.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const Header = ({ menuItems, activeLink }) => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-12">
-              <nav className="navbar navbar-expand-lg">
+              {/* <nav className="navbar navbar-expand-lg">
                 <a className="navbar-brand" href="https://buttercms.com">
                   <img src="https://cdn.buttercms.com/PBral0NQGmmFzV0uG7Q6" alt="Logo" />
                 </a>
@@ -47,14 +47,17 @@ const Header = ({ menuItems, activeLink }) => {
                       )}
                     </ul>
                   </div>
-                </div> {/* <!-- navbar collapse --> */}
-              </nav> {/* <!-- navbar --> */}
+                </div> 
+              </nav>  */}
             </div>
-          </div> {/* <!-- row --> */}
-        </div> {/* <!-- container --> */}
-      </div> {/* <!-- navbar area --> */}
+          </div>{" "}
+          {/* <!-- row --> */}
+        </div>{" "}
+        {/* <!-- container --> */}
+      </div>{" "}
+      {/* <!-- navbar area --> */}
     </header>
-  )
-}
+  );
+};
 
 export default Header;
