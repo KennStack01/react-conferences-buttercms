@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "leaflet";
-import { Popup, Marker } from "react-leaflet";
+import { Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import "leaflet/dist/images/marker-shadow.png";
+import icon from "./constants";
 import marker from "../../assets/images/location.svg";
 
-// Init custom map icon
-// if (typeof window !== 'undefined') {
-
-// }
-const myIcon =
-  typeof window !== "undefined"
-    ? new Icon({
-        iconUrl: marker,
-        iconSize: [48, 48],
-      })
-    : null;
+// const myIcon =
+//   typeof window !== "undefined"
+//     ? new Icon({
+//         iconUrl: marker,
+//         iconSize: [48, 48],
+//       })
+//     : null;
 
 const LocationComponent = ({ conference }) => {
+  const [position, setPosition] = useState(null);
+  const [bbox, setBbox] = useState([]);
+
+  const map = useMap();
+
+  useEffect(() => {
+    map.locate().on("locationfound", function (e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+      const radius = e.accuracy;
+      const circle = L.circle(e.latlng, radius);
+      circle.addTo(map);
+      setBbox(e.bounds.toBBoxString().split(","));
+    });
+  }, [map]);
+
   const LOCATION = {
     lat: conference.lat,
     lng: conference.lng,
   };
   return (
-    <Marker position={[LOCATION.lat, LOCATION.lng]} icon={myIcon}>
+    <Marker position={[LOCATION.lat, LOCATION.lng]} icon={icon}>
       <Popup>
         <h1>{conference.title}</h1> <br />
         <h5>{conference.location}</h5>

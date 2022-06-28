@@ -4,6 +4,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-shadow.png";
 import LocationComponent from "./LocationComponent";
+import CurrentLocation from "./currentLocation";
 
 const MapContainerComponent = () => {
   const data = useStaticQuery(graphql`
@@ -49,6 +50,8 @@ const MapContainerComponent = () => {
               </div>
             );
           })}
+
+          <CurrentLocation />
         </MapContainer>
       </div>
     );
