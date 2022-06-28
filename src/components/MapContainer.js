@@ -35,7 +35,7 @@ const MapContainerComponent = () => {
           // className="leaflet-container"
           style={{ height: "800px", width: "100%" }}
           center={[conferences[0].lat, conferences[0].lng]}
-          zoom={13}
+          zoom={3}
           scrollWheelZoom={false}
         >
           <TileLayer
