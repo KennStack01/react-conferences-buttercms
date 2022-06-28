@@ -19,6 +19,15 @@ module.exports = {
       resolve: `gatsby-source-buttercms`,
       options: {
         authToken: process.env.GATSBY_BUTTER_CMS_API_KEY,
+        // Optional array of Collection key
+
+        contentFields: {
+          keys: [`conference`],
+
+          // Optional. Set to 1 to enable test mode for viewing draft content.
+
+          test: previewMode,
+        },
       },
     },
     // {
