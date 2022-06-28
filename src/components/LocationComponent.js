@@ -5,15 +5,6 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet/dist/images/marker-shadow.png";
 import icon from "./constants";
-import marker from "../../assets/images/location.svg";
-
-// const myIcon =
-//   typeof window !== "undefined"
-//     ? new Icon({
-//         iconUrl: marker,
-//         iconSize: [48, 48],
-//       })
-//     : null;
 
 const LocationComponent = ({ conference }) => {
   const [position, setPosition] = useState(null);
