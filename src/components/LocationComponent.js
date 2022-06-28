@@ -3,10 +3,17 @@ import { Icon } from "leaflet";
 import { Popup, Marker } from "react-leaflet";
 import marker from "../../assets/images/location.svg";
 
-const myIcon = new Icon({
-  iconUrl: marker,
-  iconSize: [48, 48],
-});
+// Init custom map icon
+// if (typeof window !== 'undefined') {
+
+// }
+const myIcon =
+  typeof window !== "undefined"
+    ? new Icon({
+        iconUrl: marker,
+        iconSize: [48, 48],
+      })
+    : null;
 
 const LocationComponent = ({ conference }) => {
   const LOCATION = {
