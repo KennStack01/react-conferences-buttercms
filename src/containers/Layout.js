@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import Header from "./Header";
-import ScrollToTop from "../containers/ScrollToTop";
-
-// import "../../assets/css/bootstrap.min.css";
-// import "../../assets/css/lineicons.css";
-// import "../../assets/css/tiny-slider.css";
-// import "../../assets/css/main.css";
 
 const Layout = ({ children, menuItems }) => {
   const [activeLink, setActiveLink] = useState("");
@@ -52,11 +46,7 @@ const Layout = ({ children, menuItems }) => {
 
       <Header menuItems={menuItems} activeLink={activeLink} />
 
-      <ScrollToTop />
-
       <main>{children}</main>
-
-      {/* <Footer menuItems={menuItems} activeLink={activeLink} /> */}
     </>
   );
 };
